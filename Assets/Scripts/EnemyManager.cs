@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -166,6 +167,7 @@ public class EnemyManager : MonoBehaviour
         if (formationContainer != null && formationContainer.transform.childCount <= 1)
         {
             Debug.Log("All enemies destroyed! Victory!");
+             StartCoroutine(DelayedCredits());
         }
     }
     
@@ -228,4 +230,11 @@ public class EnemyManager : MonoBehaviour
             }
         }
     }
+
+    IEnumerator DelayedCredits()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("DemoCredits");
+    }
+
 }

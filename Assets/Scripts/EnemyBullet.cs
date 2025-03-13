@@ -18,7 +18,14 @@ public class EnemyBullet : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            //Get the Player component and call Die()
+            Player player = collision.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Die();
+            }
+            
+            // Destroy the bullet
             Destroy(gameObject);
         }
         else if (collision.CompareTag("Barricade"))
